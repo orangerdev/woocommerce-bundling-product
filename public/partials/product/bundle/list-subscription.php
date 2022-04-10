@@ -49,7 +49,6 @@ $subscriptions = get_posts( array(
                     <?php 
 
                         foreach ($subscriptions as $download):
-                            //$product_id = $download['product_id'];
                             $d_id = $download->ID;
                             
                             $product_id = get_post_meta($d_id, 'product_id', true);

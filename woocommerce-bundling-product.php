@@ -39,19 +39,19 @@ define( 'WOOCOMMERCE_BUNDLING_PRODUCT_VERSION', '1.0.0' );
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-woocommerce-bundling-product-activator.php
+ * This action is documented in includes/class-woobp-activator.php
  */
 function activate_woocommerce_bundling_product() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-woocommerce-bundling-product-activator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-woobp-activator.php';
 	Woocommerce_Bundling_Product_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-woocommerce-bundling-product-deactivator.php
+ * This action is documented in includes/class-woobp-deactivator.php
  */
 function deactivate_woocommerce_bundling_product() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-woocommerce-bundling-product-deactivator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-woobp-deactivator.php';
 	Woocommerce_Bundling_Product_Deactivator::deactivate();
 }
 
@@ -62,7 +62,7 @@ register_deactivation_hook( __FILE__, 'deactivate_woocommerce_bundling_product' 
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-woocommerce-bundling-product.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-woobp-product.php';
 
 /**
  * Begins execution of the plugin.
