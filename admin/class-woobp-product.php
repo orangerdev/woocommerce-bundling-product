@@ -96,7 +96,7 @@ class Product {
 				) ),
 				Field::make( 'select', 'bundle_category', __( 'Choose category of bundle product ( If Yes ).' ) )
 					->set_default_value( 0 )
-					->set_options('wbp_bundle_categories')
+					->set_options('woobp_bundle_categories')
             ));
 
 

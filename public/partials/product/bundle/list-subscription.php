@@ -46,10 +46,12 @@ $subscriptions = get_posts( array(
                 </thead>
 
                 <tbody>
-                    <?php 
+                    <?php
 
+                        $n_subscriptions = count( $subscriptions );
+                        
+                        if( 0 < $n_subscriptions ):
                         foreach ($subscriptions as $download):
-                            //$product_id = $download['product_id'];
                             $d_id = $download->ID;
                             
                             $product_id = get_post_meta($d_id, 'product_id', true);
@@ -128,6 +130,13 @@ $subscriptions = get_posts( array(
                             <?php endif; ?>
                         
                     <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td>
+                                No Bundle Product
+                            </td>
+                        </tr>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>

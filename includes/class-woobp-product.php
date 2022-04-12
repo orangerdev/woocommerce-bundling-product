@@ -103,33 +103,33 @@ class Woocommerce_Bundling_Product {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-woocommerce-bundling-product-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-woobp-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-woocommerce-bundling-product-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-woobp-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-woocommerce-bundling-product-admin.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-woocommerce-bundling-product-product.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-woobp-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-woobp-product.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-woocommerce-bundling-product-public.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-woocommerce-bundling-product-public-product.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-woobp-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-woobp-product.php';
 
 
 		/**
 		 * The functions responsible for defining all helper functions
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/function-wbp-product.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'functions/function-woobp-product.php';
 
 		$this->loader = new Woocommerce_Bundling_Product_Loader();
 
@@ -193,7 +193,7 @@ class Woocommerce_Bundling_Product {
 		$product = new Woocommerce_Bundling_Product_Public\Product( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'woocommerce_after_account_downloads',	$product, 'show_bundle_product_download', 0 );
 		$this->loader->add_action( 'ywsbs_my_subscriptions_view_after',		$product, 'show_bundle_product_subscription', 0 );
-
+		
 	}
 
 	/**
