@@ -75,7 +75,7 @@ class Product {
 
 			// do nothing
 
-			echo 'tidak ada download';
+			//echo 'tidak ada download';
 			
 		}		
 
