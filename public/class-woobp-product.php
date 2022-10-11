@@ -66,8 +66,9 @@ class Product {
 			
 			ob_start();
 			include plugin_dir_path( __FILE__ ) . 'partials/product/bundle/list-download.php';
-			return $content;
-			ob_end_flush();
+			echo ob_get_clean();
+			// return $content;
+			// ob_end_flush();
 
 			
 
@@ -93,8 +94,9 @@ class Product {
 			
 			ob_start();
 			include plugin_dir_path( __FILE__ ) . 'partials/product/bundle/list-subscription.php';
-			return $content;
-			ob_end_flush();
+			echo ob_get_clean();
+			// return $content;
+			// ob_end_flush();
 
 			
 

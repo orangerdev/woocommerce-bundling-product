@@ -94,13 +94,15 @@ $subscriptions = get_posts( array(
                                             </td>
                                             <td class="download-file" data-title="Download">
                                                 <?php                                                 
-                                                    $files = $product->get_files();
+                                                    //$files = $product->get_files();
+
+                                                    $files = $product->get_downloads();
 
                                                     $resultstr = array();
                                                     foreach( $files as $key => $each_file ) {
-                                                        $resultstr[] = '<a href="'.$each_file["file"].'">'.$each_file["name"].'</a>';
+                                                        $resultstr[] = '<a href="'.$each_file["file"].'" target="_blank">'.$each_file["name"].'</a>';
                                                     }
-                                                    
+
                                                     echo implode(", ",$resultstr);
                                                     
                                                 ?>
