@@ -83,6 +83,7 @@ class Woocommerce_Bundling_Product_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
+		
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -97,6 +98,36 @@ class Woocommerce_Bundling_Product_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/woobp-public.js', array( 'jquery' ), $this->version, false );
+		$settings = array(
+			'ajax_url'  => admin_url( 'admin-ajax.php' ),
+			'my_subscription'      => [
+				'action'    => 'get_paginated_data',
+				'nonce'     => wp_create_nonce( 'ajax-nonce' )
+			]
+		);
+
+		wp_localize_script( $this->plugin_name, 'my_account_vars', $settings);
+
+		// get current page here
+		if ( is_page() ):
+			
+    		// Get the page slug using queried object
+			$parent_slug		= get_queried_object()->post_name;
+
+			// get last segment of URL
+			$link 				= $_SERVER['REQUEST_URI'];
+			$link_array 		= explode('/',$link);
+			$n_link_array 		= count( $link_array ); 
+			$n_path_location 	= intval( $n_link_array - 2 );
+
+			$segment_path		= $link_array[$n_path_location];
+
+			if( 'my-account' == $parent_slug && 'my-subscription' == $segment_path ):				
+				wp_enqueue_script( $this->plugin_name.'-pagination', plugin_dir_url( __FILE__ ) . 'js/woobp-pagination.js', array( 'jquery' ), $this->version, false );
+			endif;
+			
+		endif;
+		// get last segment of url here
 
 	}
 
