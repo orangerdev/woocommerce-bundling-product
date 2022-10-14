@@ -193,7 +193,7 @@ class Woocommerce_Bundling_Product {
 		$product = new Woocommerce_Bundling_Product_Public\Product( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action( 'woocommerce_after_account_downloads',	$product, 'show_bundle_product_download', 0 );
 		$this->loader->add_action( 'ywsbs_my_subscriptions_view_after',		$product, 'show_bundle_product_subscription', 0 );
-		
+		$this->loader->add_action( 'wp_ajax_get_paginated_data',			$product, 'get_paginated_data', 0 );
 	}
 
 	/**

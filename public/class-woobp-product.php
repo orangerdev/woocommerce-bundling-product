@@ -62,51 +62,41 @@ class Product {
 		$has_downloads = (bool) $downloads;
 				
 		if( true === $has_downloads ){
-
 			
 			ob_start();
 			include plugin_dir_path( __FILE__ ) . 'partials/product/bundle/list-download.php';
 			echo ob_get_clean();
-			// return $content;
-			// ob_end_flush();
-
 			
-
 		}else{
-
 			// do nothing
-
-			//echo 'tidak ada download';
-			
 		}		
 
 	}
 
 	public function show_bundle_product_subscription(){
-
 		
-		
-		// $downloads     = WC()->customer->get_downloadable_products();
-		// $has_downloads = (bool) $downloads;
+		ob_start();
+		include plugin_dir_path( __FILE__ ) . 'partials/product/bundle/list-subscription.php';
+		echo ob_get_clean();
 				
-		// if( true === $has_downloads ){
 
-			
-			ob_start();
-			include plugin_dir_path( __FILE__ ) . 'partials/product/bundle/list-subscription.php';
-			echo ob_get_clean();
-			// return $content;
-			// ob_end_flush();
+	}
 
-			
+	public function get_paginated_data(){
 
-		// }else{
+		if ( ! wp_verify_nonce( $_POST['nonce'], 'ajax-nonce' ) ) {
+            die( 'Close The Door!');
+        }
 
-		// 	// do nothing
+		$current_page = ( $_POST['page'] ) ? $_POST['page'] : 1 ;
 
-		// 	echo 'tidak ada download';
-			
-		// }		
+		ob_start();
+		include plugin_dir_path( __FILE__ ) . 'partials/product/bundle/list-subscription-paginated.php';
+		$data = ob_get_contents();
+        ob_end_clean();
+
+		wp_send_json( $data );
+        wp_die();
 
 	}
 
