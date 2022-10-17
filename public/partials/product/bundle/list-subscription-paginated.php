@@ -58,6 +58,7 @@
                             if( 'yes' === $get_if_bundle ):
 
                                 $args = array(
+                                    'limit' => -1,
                                     'tax_query' => array(
                                         array(
                                             'taxonomy' => 'tax_product_bundle',
